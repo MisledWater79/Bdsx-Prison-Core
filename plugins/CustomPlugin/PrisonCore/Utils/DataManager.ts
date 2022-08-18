@@ -1,4 +1,4 @@
-import { ServerPlayer } from "bdsx/bds/player";
+import { Player, ServerPlayer } from "bdsx/bds/player";
 import { storageManager } from "bdsx/storage";
 import { FakePlayers } from "../../index";
 import FakePlayer from "../FakePlayer";
@@ -16,7 +16,7 @@ export class DataManager extends Manager{
 
 }
 
-export function getFakePlayer(player: ServerPlayer):FakePlayer | undefined{
+export function getFakePlayer(player: ServerPlayer | Player):FakePlayer | undefined{
     return getFakePlayerUuid(player.getUuid())
 }
 

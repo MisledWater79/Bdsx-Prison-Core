@@ -5,6 +5,11 @@ import PlayerJoin from "./PrisonCore/Events/PlayerJoin";
 import FakePlayer from "./PrisonCore/FakePlayer";
 import { Manager } from "./PrisonCore/Manager";
 import { DataManager } from "./PrisonCore/Utils/DataManager";
+import BlockBreak from "./PrisonCore/Events/BlockBreak";
+import BlockInteract from "./PrisonCore/Events/BlockInteract";
+import BlockPlace from "./PrisonCore/Events/BlockPlace";
+import rank from "./PrisonCore/Commands/rank";
+import ItemUseOn from "./PrisonCore/Events/ItemUseOn";
 
 console.log('\x1b[36m[PrisonCore] \x1b[32mFound');
 
@@ -28,11 +33,16 @@ function registerManagers(){
 }
 
 function registerCommands(){
-    form();
     data();
+    form();
+    rank();
 }
 
 function registerEvents(){
+    BlockBreak();
+    BlockInteract();
+    BlockPlace();
+    ItemUseOn();
     PlayerJoin();
 }
 
