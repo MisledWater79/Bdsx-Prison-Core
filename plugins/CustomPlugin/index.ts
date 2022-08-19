@@ -1,3 +1,4 @@
+import './PrisonCore/ContainerMenu/ContainerMenu';
 import { events } from "bdsx/event";
 import form from "./PrisonCore/Commands/form";
 import data from "./PrisonCore/Commands/data";
@@ -10,6 +11,7 @@ import BlockInteract from "./PrisonCore/Events/BlockInteract";
 import BlockPlace from "./PrisonCore/Events/BlockPlace";
 import rank from "./PrisonCore/Commands/rank";
 import ItemUseOn from "./PrisonCore/Events/ItemUseOn";
+import shop from './PrisonCore/Commands/shop';
 
 console.log('\x1b[36m[PrisonCore] \x1b[32mFound');
 
@@ -33,6 +35,7 @@ function registerManagers(){
 }
 
 function registerCommands(){
+    shop();
     data();
     form();
     rank();

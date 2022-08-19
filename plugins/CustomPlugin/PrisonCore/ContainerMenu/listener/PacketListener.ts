@@ -3,6 +3,8 @@ import { MinecraftPacketIds } from "bdsx/bds/packetids";
 import { PlayerManager } from "../PlayerManager";
 import { CANCEL } from "bdsx/common";
 import { ItemStackRequestActionTransferBase } from "bdsx/bds/packets";
+import { ContainerId } from "bdsx/bds/inventory";
+import { NetworkIdentifier } from "bdsx/bds/networkidentifier";
 
 export namespace PacketListener {
 
@@ -15,6 +17,10 @@ export namespace PacketListener {
                     requestData.actions.toArray().forEach((action) => {
                         if(action instanceof ItemStackRequestActionTransferBase) {
                             if(container.callTransactionCallback(action) !== CANCEL) {
+                                console.log(action.type)
+                                console.log(action.getSrc().slot)
+                                console.log(container.getPlayer().getInventory().getItem(action.getSrc().slot,ContainerId.Inventory)?.getName())
+                                console.log(container.getItem(action.getSrc().slot)?.getName())
                                 /*
                                 TODO :
                                  handle non cancelled requests (allow items to be taken/placed etc)

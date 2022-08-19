@@ -25,6 +25,7 @@ type ContainerCloseCallback = () => void;
 export class FakeContainer {
     protected netId: NetworkIdentifier;
     private containerId: number;
+    protected player: ServerPlayer;
     protected position: BlockPos;
     private block: Block;
     private containerType: ContainerType;
@@ -39,11 +40,16 @@ export class FakeContainer {
     constructor(block: Block, containerType: ContainerType, containerSize: number, player: ServerPlayer, destructItems: boolean = true, inventory: ContainerInventory = {}) {
         this.netId = player.getNetworkIdentifier();
         this.containerId = player.nextContainerCounter();
+        this.player = player;
         this.block = block;
         this.containerType = containerType;
         this.containerSize = containerSize;
         this.destructItems = destructItems;
         this.inventory = inventory;
+    }
+
+    public getPlayer(): ServerPlayer {
+        return this.player;
     }
 
     /**
